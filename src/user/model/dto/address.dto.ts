@@ -24,4 +24,8 @@ export class AddressDto {
   @IsOptional()
   @Length(2, 20)
   door?: string;
+
+  @IsOptional()
+  @Length(2, 20)
+  bell?: string;
 }

@@ -1,6 +1,7 @@
 import {
   ConflictException,
   HttpException,
+  HttpStatus,
   Injectable,
   NotFoundException,
   UnauthorizedException,
@@ -42,23 +43,24 @@ export class UserService {
     };
   }
 
-  async register(registration: RegistrationDto) {
+  async register(registrationDto: RegistrationDto) {
     const address = new Address();
-    address.city = registration.address.city;
-    address.place = registration.address.place;
-    address.number = registration.address.number;
-    address.staircase = registration.address.staircase;
-    address.floor = registration.address.floor;
-    address.door = registration.address.door;
+    address.city = registrationDto.address.city;
+    address.place = registrationDto.address.place;
+    address.number = registrationDto.address.number;
+    address.staircase = registrationDto.address.staircase;
+    address.floor = registrationDto.address.floor;
+    address.door = registrationDto.address.door;
+    address.bell = registrationDto.address.bell;
 
-    const passwordHash = await bcrypt.hash(registration.password, saltRounds);
+    const passwordHash = await bcrypt.hash(registrationDto.password, saltRounds);
 
     const newUser = new User();
-    newUser.familyName = registration.familyName;
-    newUser.givenName = registration.givenName;
-    newUser.email = registration.email;
-    newUser.username = registration.username;
-    newUser.phoneNumber = registration.phoneNumber;
+    newUser.familyName = registrationDto.familyName;
+    newUser.givenName = registrationDto.givenName;
+    newUser.email = registrationDto.email;
+    newUser.username = registrationDto.username;
+    newUser.phoneNumber = registrationDto.phoneNumber;
     newUser.address = address;
     newUser.passwordHash = passwordHash;
 
@@ -85,7 +87,7 @@ export class UserService {
         if (error.keyPattern?.username)
           throw new ConflictException('Ez a felhasználónév már használatban van.');
       }
-      throw new HttpException('Hiba történt a felhasználó létrehozása során.', 500);
+      throw new HttpException('Hiba történt a felhasználó létrehozása során.', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }

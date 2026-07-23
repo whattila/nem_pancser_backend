@@ -19,6 +19,9 @@ export class Address {
   
   @Prop()
   door?: string;
+
+  @Prop()
+  bell?: string;
 }
 
 export const AddressSchema = SchemaFactory.createForClass(Address);
