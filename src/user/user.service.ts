@@ -22,8 +22,7 @@ const saltRounds = config.bcryptSaltRounds;
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(User.name)
-    private readonly userModel: Model<UserDocument>,
+    @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
     private jwtService: JwtService,
   ) {}
 
@@ -63,6 +62,7 @@ export class UserService {
     newUser.phoneNumber = registrationDto.phoneNumber;
     newUser.address = address;
     newUser.passwordHash = passwordHash;
+    newUser.subscribeToNewsletter = registrationDto.subscribeToNewsletter;
 
     const createdUser = await this.createUser(newUser);
     

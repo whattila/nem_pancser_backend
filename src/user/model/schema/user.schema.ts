@@ -37,8 +37,11 @@ export class User {
   })
   address!: Address;
 
-  @Prop({required: true})
+  @Prop({ required: true })
   passwordHash!: string;
+
+  @Prop({ required: true })
+  subscribeToNewsletter!: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

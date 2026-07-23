@@ -1,4 +1,4 @@
-import { IsAlpha, IsAlphanumeric, IsEmail, IsObject, IsPhoneNumber, IsStrongPassword, Length, Matches, ValidateNested } from 'class-validator';
+import { IsAlpha, IsAlphanumeric, IsBoolean, IsEmail, IsObject, IsPhoneNumber, IsStrongPassword, Length, Matches, ValidateNested } from 'class-validator';
 import { AddressDto } from './address.dto';
 
 export class RegistrationDto {
@@ -22,6 +22,9 @@ export class RegistrationDto {
 
   @IsPhoneNumber()
   phoneNumber!: string;
+
+  @IsBoolean()
+  subscribeToNewsletter!: boolean;
 
   @IsObject()
   @ValidateNested()
