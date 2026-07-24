@@ -1,8 +1,8 @@
-import { IsAlpha, IsAlphanumeric, IsBoolean, IsEmail, IsObject, IsPhoneNumber, IsStrongPassword, Length, Matches, ValidateNested } from 'class-validator';
+import { IsAlphanumeric, IsBoolean, IsEmail, IsObject, IsPhoneNumber, IsString, IsStrongPassword, ValidateNested } from 'class-validator';
 import { AddressDto } from './address.dto';
+import { Type } from 'class-transformer';
 
 export class RegistrationDto {
-  @Length(3, 20)
   @IsAlphanumeric()
   username!: string;
 
@@ -12,12 +12,10 @@ export class RegistrationDto {
   @IsStrongPassword()
   password!: string;
 
-  @Length(2, 20)
-  @Matches(/^\p{L}+(?:-\p{L}+)?$/u) // Accepts string with only letters and optional hyphenated second part, e.g. "Smith" or "Smith-Jones"
+  @IsString()
   familyName!: string;
 
-  @Length(2, 15)
-  @IsAlpha()
+  @IsString()
   givenName!: string;
 
   @IsPhoneNumber()
@@ -26,7 +24,7 @@ export class RegistrationDto {
   @IsBoolean()
   subscribeToNewsletter!: boolean;
 
-  @IsObject()
   @ValidateNested()
+  @Type(() => AddressDto)
   address!: AddressDto;
 }
