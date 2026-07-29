@@ -1,33 +1,24 @@
-import {
-  ConflictException,
-  HttpException,
-  HttpStatus,
-  Injectable,
-  NotFoundException,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import config from '../../config/keys';
 import { JwtService } from '@nestjs/jwt';
+import { LoginDto } from './model/login.dto';
 import * as bcrypt from 'bcrypt';
-import config from '../config/keys';
-import { RegistrationDto } from './model/dto/registration.dto';
-import { LoginDto } from './model/dto/login.dto';
-import { Address } from './model/schema/address.schema';
-import { User, UserDocument } from './model/schema/user.schema';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { MongoServerError } from 'mongodb';
+import { RegistrationDto } from './model/registration.dto';
+import { Address } from '../shared/address.schema';
+import { User } from '../user/user.schema';
+import { UserService } from '../user/user.service';
 
 const saltRounds = config.bcryptSaltRounds;
 
 @Injectable()
-export class UserService {
+export class AuthService {
   constructor(
-    @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
+    private userService: UserService,
     private jwtService: JwtService,
   ) {}
 
   async login(loginDto: LoginDto) {
-    const user = await this.findByUserName(loginDto.username);
+    const user = await this.userService.findByUserName(loginDto.username);
     if (!user)
       throw new NotFoundException('Felhasználó nem létezik');
 
@@ -64,30 +55,12 @@ export class UserService {
     newUser.passwordHash = passwordHash;
     newUser.subscribeToNewsletter = registrationDto.subscribeToNewsletter;
 
-    const createdUser = await this.createUser(newUser);
+    const createdUser = await this.userService.createUser(newUser);
     
     const payload = { username: createdUser.username, sub: createdUser._id!.toString() };
     return {
       id: createdUser._id!.toString(),
       access_token: await this.jwtService.signAsync(payload),
     };
-  }
-
-  private async findByUserName(username: string): Promise<User | null> {
-    return this.userModel.findOne({ username: username }).lean();
-  }
-
-  private async createUser(user: User): Promise<User> {
-    try {
-      return await new this.userModel(user).save();
-    } catch (error) {
-      if (error instanceof MongoServerError && error.code === 11000) {
-        if (error.keyPattern?.email)
-          throw new ConflictException('Ez az e-mail cím már használatban van.');
-        if (error.keyPattern?.username)
-          throw new ConflictException('Ez a felhasználónév már használatban van.');
-      }
-      throw new HttpException('Hiba történt a felhasználó létrehozása során.', HttpStatus.INTERNAL_SERVER_ERROR);
-    }
   }
 }
