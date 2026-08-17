@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import config from './config/keys';
 import { UserModule } from './features/user/user.module';
 import { AuthModule } from './features/auth/auth.module';
+import { DishModule } from './features/dish/dish.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth_guard/auth.guard';
 
@@ -12,6 +13,7 @@ import { AuthGuard } from './auth_guard/auth.guard';
   imports: [
     AuthModule,
     UserModule,
+    DishModule,
     MongooseModule.forRoot(config.databaseUrl)
   ],
   controllers: [AppController],
