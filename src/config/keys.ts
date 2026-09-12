@@ -5,8 +5,10 @@ dotenv.config();
 const databaseUrl = process.env.DATABASE_URL;
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSaltRoundsAsString = process.env.BCRYPT_SALT_ROUNDS;
+const authDisabledAsString = process.env.AUTH_DISABLED;
 
 const bcryptSaltRounds = bcryptSaltRoundsAsString ? parseInt(bcryptSaltRoundsAsString) : undefined;
+const authDisabled = authDisabledAsString === 'true';
 
 if (!databaseUrl) {
   throw new Error('DATABASE_URL is required');
@@ -23,5 +25,6 @@ if (!bcryptSaltRounds) {
 export default {
   databaseUrl,
   jwtSecret,
-  bcryptSaltRounds
+  bcryptSaltRounds,
+  authDisabled
 };
