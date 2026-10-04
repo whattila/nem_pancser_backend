@@ -19,4 +19,14 @@ export class DishController {
   async getDishById(@Param('id') id: string) {
     return await this.dishService.getDishById(id);
   }
+
+  @Get('dishOptions')
+  async getDishOptions() {
+    return await this.dishService.getDishOptions();
+  }
+
+  @Get('saladExtras')
+  async getSaladExtras() {
+    return await this.dishService.getSaladExtras();
+  }
 }

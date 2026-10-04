@@ -1,25 +1,22 @@
-import { Expose, Transform } from "class-transformer";
+import { Expose } from "class-transformer";
+import { MenuItemDto } from "src/features/shared/menu_item/menu_item.dto";
 
-export class DishDto {
-    @Expose()
-    @Transform(({ obj }) => obj._id?.toString())
-    id!: string;
-
-    @Expose()
-    name!: string;
-
+export class DishDto extends MenuItemDto {
     @Expose()
     price!: number;
 
     @Expose()
-    description!: string;
+    pancserCreditValue?: number;
 
     @Expose()
     allergens?: string[];
 
     @Expose()
-    pancserCredit?: number;
+    hasSideDishOption?: boolean;
 
     @Expose()
-    imageUrl!: string;
+    hasMeatOption?: boolean;
+
+    @Expose()
+    hasSaladExtraOption?: boolean;
 }

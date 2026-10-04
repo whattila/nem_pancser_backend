@@ -1,18 +1,19 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { DishCategory, DishCategoryDocument } from './model/schema/dish_category.schema';
+import { DishCategory } from './model/schema/dish_category.schema';
 import { plainToInstance } from 'class-transformer';
 import { DishCategoryDto } from './model/dto/dish_category.dto';
 import { DishHeaderDto } from './model/dto/dish_header.dto';
-import { Dish, DishDocument } from './model/schema/dish.schema';
+import { MenuItem } from '../shared/menu_item/menu_item.schema';
 import { DishDto } from './model/dto/dish.dto';
+import { DishAccessoryDto } from './model/dto/dish_accessory.dto';
 
 @Injectable()
 export class DishService {
   constructor(
-    @InjectModel(DishCategory.name) private readonly dishCategoryModel: Model<DishCategoryDocument>,
-    @InjectModel(Dish.name) private readonly dishModel: Model<DishDocument>
+    @InjectModel(DishCategory.name) private readonly dishCategoryModel: Model<DishCategory>,
+    @InjectModel(MenuItem.name) private readonly menuItemModel: Model<MenuItem>
   ) {}
 
   async getAllDishCategories(): Promise<DishCategoryDto[]> {
@@ -21,12 +22,12 @@ export class DishService {
   }
 
   async getDishesByCategory(categoryId: string): Promise<DishHeaderDto[]> {
-    const dishes = await this.dishModel.find({ category: categoryId }).select('name price').lean();
+    const dishes = await this.menuItemModel.find({ categories: categoryId }).select('name price').lean();
     return plainToInstance(DishHeaderDto, dishes, { excludeExtraneousValues: true });
   }
 
   async getDishById(id: string): Promise<DishDto> {
-    const dish = await this.dishModel.findById(id).lean();
+    const dish = await this.menuItemModel.findById(id).lean();
     if (!dish)
       throw new NotFoundException('A fogás nem található');
     
@@ -38,5 +39,15 @@ export class DishService {
         exposeUnsetFields: false
       }
     );
+  }
+
+  async getDishOptions(): Promise<DishAccessoryDto[]> {
+    const dishOptions = await this.menuItemModel.find({ dishAccessoryType: { $exists: true } }).select('name price').lean();
+    return plainToInstance(DishAccessoryDto, dishOptions, { excludeExtraneousValues: true });
+  }
+
+  async getSaladExtras(): Promise<DishAccessoryDto[]> {
+    const saladExtras = await this.menuItemModel.find({ hasSaladExtraOption: true }).select('name price').lean();
+    return plainToInstance(DishAccessoryDto, saladExtras, { excludeExtraneousValues: true });
   }
 }

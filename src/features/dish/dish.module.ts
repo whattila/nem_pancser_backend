@@ -3,14 +3,12 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { DishController } from './dish.controller';
 import { DishService } from './dish.service';
 import { DishCategory, DishCategorySchema } from './model/schema/dish_category.schema';
-import { Dish, DishSchema } from './model/schema/dish.schema';
+import { MenuItemModule } from '../shared/menu_item/menu_item.module';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-      { name: Dish.name, schema: DishSchema },
-      { name: DishCategory.name, schema: DishCategorySchema },
-    ]),
+    MongooseModule.forFeature([{ name: DishCategory.name, schema: DishCategorySchema }]),
+    MenuItemModule
   ],
   controllers: [DishController],
   providers: [DishService]

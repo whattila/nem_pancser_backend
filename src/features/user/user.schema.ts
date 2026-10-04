@@ -1,8 +1,6 @@
-import { HydratedDocument, Types } from 'mongoose';
+import { Types } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Address, AddressSchema } from '../shared/address.schema';
-
-export type UserDocument = HydratedDocument<User>;
+import { Address, AddressSchema } from '../shared/address/address.schema';
 
 @Schema({
   timestamps: true,

@@ -8,12 +8,14 @@ import { AuthModule } from './features/auth/auth.module';
 import { DishModule } from './features/dish/dish.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth_guard/auth.guard';
+import { MenuItemModule } from './features/shared/menu_item/menu_item.module';
 
 @Module({
   imports: [
     AuthModule,
     UserModule,
     DishModule,
+    MenuItemModule,
     MongooseModule.forRoot(config.databaseUrl)
   ],
   controllers: [AppController],

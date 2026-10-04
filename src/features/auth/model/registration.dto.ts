@@ -1,6 +1,6 @@
 import { IsAlphanumeric, IsBoolean, IsEmail, IsPhoneNumber, IsString, IsStrongPassword, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
-import { AddressDto } from 'src/features/shared/address.dto';
+import { AddressDto } from 'src/features/shared/address/address.dto';
 
 export class RegistrationDto {
   @IsAlphanumeric()

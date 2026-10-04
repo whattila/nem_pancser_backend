@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { LoginDto } from './model/login.dto';
 import * as bcrypt from 'bcrypt';
 import { RegistrationDto } from './model/registration.dto';
-import { Address } from '../shared/address.schema';
+import { Address } from '../shared/address/address.schema';
 import { User } from '../user/user.schema';
 import { UserService } from '../user/user.service';
 
