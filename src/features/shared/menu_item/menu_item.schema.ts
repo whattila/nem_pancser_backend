@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Types } from "mongoose";
 import { DishCategory } from "../../dish/model/schema/dish_category.schema";
+import { DishAccessoryType } from "src/features/dish/model/enum/dish_accessory_type";
 
 @Schema({
     collection: "menu_items",
@@ -16,8 +17,11 @@ export class MenuItem {
     })
     dishCategories?: Types.ObjectId[];
 
-    @Prop()
-    dishAccessoryType?: string;
+    @Prop({
+        type: String,
+        enum: DishAccessoryType
+    })
+    dishAccessoryType?: DishAccessoryType;
 
     @Prop()
     pizzaPropertyType?: string;

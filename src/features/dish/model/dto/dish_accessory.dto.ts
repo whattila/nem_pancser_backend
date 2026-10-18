@@ -1,4 +1,5 @@
 import { Expose, Transform } from "class-transformer";
+import { DishAccessoryType } from "../enum/dish_accessory_type";
 
 export class DishAccessoryDto {
     @Expose()
@@ -7,6 +8,13 @@ export class DishAccessoryDto {
 
     @Expose()
     name!: string;
+
+    @Expose()
+    @Transform(
+        ({ obj }) => obj.boatType,
+        { toClassOnly: true },
+    )
+    type!: DishAccessoryType;
 
     @Expose()
     price!: number;
