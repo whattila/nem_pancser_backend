@@ -1,0 +1,328 @@
+[
+    {
+        "name": "Gyertyafényes menü 2 személyre",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d1b" }
+        ],
+        "description": "csirke cordon, szezámos jércerudak, szezámos mozzarella, grill karaj, steakburgonya, rizi-bizi, csemege uborka, 1L gyümölcslé",
+        "allergens": [
+            { "$oid": "6adf60a2bc99725e23ccdcc4" },
+            { "$oid": "6adf60a2bc99725e23ccdcc5" },
+            { "$oid": "6adf60a2bc99725e23ccdcc6" },
+            { "$oid": "6adf60a2bc99725e23ccdcc7" },
+            { "$oid": "6adf60a2bc99725e23ccdcc8" },
+            { "$oid": "6adf60a2bc99725e23ccdcc9" }
+        ],
+        "price": 16995,
+        "pancserCreditValue": 235
+    },
+    {
+        "name": "Kemencében sült .....szelet, rásütött feta mozzarella bacon",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d1b" }
+        ],
+        "allergens": [
+            { "$oid": "6adf60a2bc99725e23ccdcc5" },
+            { "$oid": "6adf60a2bc99725e23ccdcc6" },
+            { "$oid": "6adf60a2bc99725e23ccdcc7" }
+        ],
+        "price": 4895,
+        "pancserCreditValue": 45,
+        "hasSideDishOption": true,
+        "hasMeatOption": true
+    },
+    {
+        "name": "Hollókői sistergős",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d1b" }
+        ],
+        "description": "szűzpecsenye füstöltsajttal kemencében sütve",
+        "allergens": [
+            { "$oid": "6adf60a2bc99725e23ccdcc5" },
+            { "$oid": "6adf60a2bc99725e23ccdcc6" },
+            { "$oid": "6adf60a2bc99725e23ccdcc7" },
+            { "$oid": "6adf60a2bc99725e23ccdcc8" }        
+        ],
+        "price": 4895,
+        "pancserCreditValue": 45,
+        "hasSideDishOption": true
+    },
+    {
+        "name": "Milánói .....szelet",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d1c" }
+        ],
+        "description": "rántott szelet, milánói spagettivel",
+        "allergens": [
+            { "$oid": "6adf60a2bc99725e23ccdcc4" },
+            { "$oid": "6adf60a2bc99725e23ccdcc5" },
+            { "$oid": "6adf60a2bc99725e23ccdcc6" },
+            { "$oid": "6adf60a2bc99725e23ccdcc7" },
+            { "$oid": "6adf60a2bc99725e23ccdcc8" }
+        ],
+        "price": 4895,
+        "pancserCreditValue": 43,
+        "hasMeatOption": true
+    },
+    {
+        "name": "Görög saláta",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d18" }
+        ],
+        "description": "feta sajt, paradicsom, kígyóuborka, édes paprika, olivabogyó, lilahagyma",
+        "allergens": [
+            { "$oid": "6adf60a2bc99725e23ccdcc5" },
+            { "$oid": "6adf60a2bc99725e23ccdcc6" },
+            { "$oid": "6adf60a2bc99725e23ccdcc7" }
+        ],
+        "price": 3995,
+        "pancserCreditValue": 33,
+        "hasSaladExtraOption": true
+    },
+    {
+        "name": "Csirkemell",
+        "dishAccessoryType": "meatOption"
+    },
+    {
+        "name": "Sertésszelet",
+        "dishAccessoryType": "meatOption"
+    },
+    {
+        "name": "Édesburgonya gerezdek",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 12,
+        "price": 1590
+    },
+    {
+        "name": "Friss kevert saláta vinegrettel",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 16,
+        "price": 1355
+    },
+    {
+        "name": "Petrezselymes burgonya",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 8,
+        "price": 950
+    },
+    {
+        "name": "Kerti zöldségek grillezve",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 12,
+        "price": 1490
+    },
+    {
+        "name": "Hasábburgonya",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 10,
+        "price": 950
+    },
+    {
+        "name": "Burgonyakrokett",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "allergens": [
+            { "$oid": "6adf60a2bc99725e23ccdcc4" },
+            { "$oid": "6adf60a2bc99725e23ccdcc5" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 10,
+        "price": 950
+    },
+    {
+        "name": "Kukoricás jázminrizs",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 10,
+        "price": 950
+    },
+    {
+        "name": "Rizi-bizi",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 10,
+        "price": 950
+    },
+    {
+        "name": "Jázmin rizs",
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 10,
+        "price": 950
+    },
+    {
+        "name": "Steakburgonya",
+        "allergens": [
+            { "$oid": "6adf60a2bc99725e23ccdcc6" },
+            { "$oid": "6adf60a2bc99725e23ccdcc7" }
+        ],
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 10,
+        "price": 950
+    },
+    {
+        "name": "Vajas galuska",
+        "allergens": [
+            { "$oid": "6adf60a2bc99725e23ccdcc4" },
+            { "$oid": "6adf60a2bc99725e23ccdcc5" }
+        ],
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 10,
+        "price": 950
+    },
+    {
+        "name": "Vegyesköret",
+        "description": "rizs, hasábburgonya",
+        "allergens": [
+            { "$oid": "6adf60a2bc99725e23ccdcc4" }
+        ],
+        "dishCategories": [
+            { "$oid": "6a808daf5234962d21cf9d21" }
+        ],
+        "dishAccessoryType": "sideDish",
+        "pancserCreditValue": 10,
+        "price": 950
+    },
+    {
+        "name": "Mozzarella sajt",
+        "price": 500,
+        "dishAccessoryType": "saladExtra",
+        "pizzaPropertyType": "topping"
+    },
+    {
+        "name": "Trappista sajt",
+        "price": 500,
+        "dishAccessoryType": "saladExtra",
+        "pizzaPropertyType": "topping"
+    },
+    {
+        "name": "Oliva bogyó",
+        "price": 190,
+        "dishAccessoryType": "saladExtra",
+        "pizzaPropertyType": "topping"
+    },
+    {
+        "name": "Feta sajt",
+        "price": 300,
+        "dishAccessoryType": "saladExtra",
+        "pizzaPropertyType": "topping"
+    },
+    {
+        "name": "Füstölt sajt",
+        "price": 300,
+        "dishAccessoryType": "saladExtra",
+        "pizzaPropertyType": "topping"
+    },
+    {
+        "name": "Lilahagyma",
+        "price": 190,
+        "dishAccessoryType": "saladExtra",
+        "pizzaPropertyType": "topping"
+    },
+    {
+        "name": "Tonhaldarabok",
+        "price": 890,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "Gorgonzola sajt",
+        "price": 300,
+        "dishAccessoryType": "saladExtra",
+        "pizzaPropertyType": "topping"
+    },
+    {
+        "name": "Gyros hús",
+        "price": 490,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "Tzatziki",
+        "price": 445,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "Cézár öntet",
+        "price": 445,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "5 db grillezett tigrisrák",
+        "price": 990,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "10 db grillezett tigrisrák",
+        "price": 1790,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "Csirkemell csíkok",
+        "price": 690,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "Parmezánforgács",
+        "price": 350,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "2 szelet grillezett füstölt mozzarella",
+        "price": 990,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "Kukorica",
+        "price": 190,
+        "dishAccessoryType": "saladExtra",
+        "pizzaPropertyType": "topping"
+    },
+    {
+        "name": "Ananász",
+        "price": 300,
+        "dishAccessoryType": "saladExtra",
+        "pizzaPropertyType": "topping"
+    },
+    {
+        "name": "2 adag parmezánforgács",
+        "price": 700,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "1 db főtt tojás",
+        "price": 350,
+        "dishAccessoryType": "saladExtra"
+    },
+    {
+        "name": "2 db főtt tojás",
+        "price": 700,
+        "dishAccessoryType": "saladExtra"
+    }
+]

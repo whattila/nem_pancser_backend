@@ -8,6 +8,8 @@ import { DishHeaderDto } from './model/dto/dish_header.dto';
 import { MenuItem } from '../shared/menu_item/menu_item.schema';
 import { DishDto } from './model/dto/dish.dto';
 import { DishAccessoryDto } from './model/dto/dish_accessory.dto';
+import { DishAccessoryType } from './model/enum/dish_accessory_type';
+import { Allergen } from './model/schema/allergen.schema';
 
 @Injectable()
 export class DishService {
@@ -27,27 +29,48 @@ export class DishService {
   }
 
   async getDishById(id: string): Promise<DishDto> {
-    const dish = await this.menuItemModel.findById(id).lean();
-    if (!dish)
+    const dish = await this.menuItemModel
+      .findById(id)
+      .populate<{ allergens: Pick<Allergen, 'name'>[] }>({
+        path: 'allergens',
+        select: 'name -_id',
+      })
+      .lean();
+
+    if (!dish) {
       throw new NotFoundException('A fogás nem található');
-    
+    }
+
     return plainToInstance(
       DishDto,
-      dish,
+      {
+        ...dish,
+        allergens: dish.allergens?.map(allergen => allergen.name),
+      },
       {
         excludeExtraneousValues: true,
-        exposeUnsetFields: false
+        exposeUnsetFields: false,
       }
     );
   }
 
   async getDishOptions(): Promise<DishAccessoryDto[]> {
-    const dishOptions = await this.menuItemModel.find({ dishAccessoryType: { $exists: true } }).select('name price').lean();
+    const dishOptions = await this.menuItemModel
+      .find({
+          dishAccessoryType: {
+            $in: [DishAccessoryType.SIDE_DISH, DishAccessoryType.MEAT_OPTION] 
+          }
+      })
+      .select('name price dishAccessoryType')
+      .lean();
     return plainToInstance(DishAccessoryDto, dishOptions, { excludeExtraneousValues: true });
   }
 
   async getSaladExtras(): Promise<DishAccessoryDto[]> {
-    const saladExtras = await this.menuItemModel.find({ hasSaladExtraOption: true }).select('name price').lean();
+    const saladExtras = await this.menuItemModel
+      .find({ dishAccessoryType: DishAccessoryType.SALAD_EXTRA })
+      .select('name price dishAccessoryType')
+      .lean();
     return plainToInstance(DishAccessoryDto, saladExtras, { excludeExtraneousValues: true });
   }
 }

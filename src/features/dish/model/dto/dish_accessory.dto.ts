@@ -11,7 +11,7 @@ export class DishAccessoryDto {
 
     @Expose()
     @Transform(
-        ({ obj }) => obj.boatType,
+        ({ obj }) => obj.dishAccessoryType,
         { toClassOnly: true },
     )
     type!: DishAccessoryType;

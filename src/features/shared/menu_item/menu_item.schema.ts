@@ -1,7 +1,8 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Types } from "mongoose";
+import { Schema as MongooseSchema, Types } from "mongoose";
 import { DishCategory } from "../../dish/model/schema/dish_category.schema";
 import { DishAccessoryType } from "src/features/dish/model/enum/dish_accessory_type";
+import { Allergen } from "src/features/dish/model/schema/allergen.schema";
 
 @Schema({
     collection: "menu_items",
@@ -12,8 +13,9 @@ export class MenuItem {
     name!: string;
 
     @Prop({
-        type: [Types.ObjectId],
+        type: [MongooseSchema.Types.ObjectId],
         ref: DishCategory.name,
+        default: undefined
     })
     dishCategories?: Types.ObjectId[];
 
@@ -23,7 +25,7 @@ export class MenuItem {
     })
     dishAccessoryType?: DishAccessoryType;
 
-    @Prop()
+    @Prop() // TODO: use enum
     pizzaPropertyType?: string;
 
     @Prop()
@@ -33,10 +35,11 @@ export class MenuItem {
     description?: string;
 
     @Prop({
-        type: [String],
-        default: undefined,
+        type: [MongooseSchema.Types.ObjectId],
+        ref: Allergen.name,
+        default: undefined
     })
-    allergens?: string[];
+    allergens?: Types.ObjectId[];
 
     @Prop()
     hasSideDishOption?: boolean;
