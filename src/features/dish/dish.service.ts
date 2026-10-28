@@ -24,7 +24,7 @@ export class DishService {
   }
 
   async getDishesByCategory(categoryId: string): Promise<DishHeaderDto[]> {
-    const dishes = await this.menuItemModel.find({ categories: categoryId }).select('name price').lean();
+    const dishes = await this.menuItemModel.find({ dishCategories: categoryId }).select('name price').lean();
     return plainToInstance(DishHeaderDto, dishes, { excludeExtraneousValues: true });
   }
 
@@ -40,7 +40,7 @@ export class DishService {
     if (!dish) {
       throw new NotFoundException('A fogás nem található');
     }
-
+    
     return plainToInstance(
       DishDto,
       {
